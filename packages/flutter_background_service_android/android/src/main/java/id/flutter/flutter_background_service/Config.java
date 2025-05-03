@@ -62,6 +62,14 @@ public class Config {
         pref.edit().putString("initial_notification_content", value).apply();
     }
 
+    public String getInitialNotificationIcon() {
+        return pref.getString("initial_notification_icon", null);
+    }
+
+    public void setInitialNotificationIcon(String value) {
+        pref.edit().putString("initial_notification_icon", value).apply();
+    }
+
     public String getNotificationChannelId() {
         return pref.getString("notification_channel_id", null);
     }
