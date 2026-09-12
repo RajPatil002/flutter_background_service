@@ -93,6 +93,7 @@ public class FlutterBackgroundServicePlugin implements FlutterPlugin, MethodCall
                 boolean autoStart = arg.getBoolean("auto_start");
                 String initialNotificationTitle = arg.isNull("initial_notification_title") ? null : arg.getString("initial_notification_title");
                 String initialNotificationContent = arg.isNull("initial_notification_content") ? null : arg.getString("initial_notification_content");
+                String initialNotificationIcon = arg.isNull("initial_notification_icon") ? null : arg.getString("initial_notification_icon");
                 String notificationChannelId = arg.isNull("notification_channel_id") ? null : arg.getString("notification_channel_id");
                 int foregroundNotificationId = arg.isNull("foreground_notification_id") ? null : arg.getInt("foreground_notification_id");
                 JSONArray foregroundServiceTypes = arg.isNull("foreground_service_types") ? null : arg.getJSONArray("foreground_service_types");
@@ -113,6 +114,7 @@ public class FlutterBackgroundServicePlugin implements FlutterPlugin, MethodCall
                 config.setAutoStartOnBoot(autoStartOnBoot);
                 config.setInitialNotificationTitle(initialNotificationTitle);
                 config.setInitialNotificationContent(initialNotificationContent);
+                config.setInitialNotificationIcon(initialNotificationIcon);
                 config.setNotificationChannelId(notificationChannelId);
                 config.setForegroundNotificationId(foregroundNotificationId);
                 config.setForegroundServiceTypes(foregroundServiceTypesStr);

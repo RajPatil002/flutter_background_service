@@ -49,6 +49,7 @@ public class BackgroundService extends Service implements MethodChannel.MethodCa
     private boolean isManuallyStopped = false;
     private String notificationTitle;
     private String notificationContent;
+    private String notificationIcon;
     private String notificationChannelId;
     private int notificationId;
     private String configForegroundTypes;
@@ -96,6 +97,7 @@ public class BackgroundService extends Service implements MethodChannel.MethodCa
 
         notificationTitle = config.getInitialNotificationTitle();
         notificationContent = config.getInitialNotificationContent();
+        notificationIcon = config.getInitialNotificationIcon();
         notificationId = config.getForegroundNotificationId();
         configForegroundTypes = config.getForegroundServiceTypes();
         updateNotificationInfo();
@@ -156,8 +158,25 @@ public class BackgroundService extends Service implements MethodChannel.MethodCa
             }
 
             PendingIntent pi = PendingIntent.getActivity(BackgroundService.this, 11, i, flags);
+
+            int iconId = R.drawable.ic_stat_notification;
+            if (notificationIcon != null) {
+                int resId = 0;
+                
+                if (notificationIcon.startsWith("@")) {
+                    String[] cleanPaths = notificationIcon.substring(1).split("/");
+                    if (cleanPaths.length == 2) {
+                        resId = getResources().getIdentifier(cleanPaths[1], cleanPaths[0], getPackageName());
+                    }
+                }
+                
+                if (resId != 0) {
+                    iconId = resId;
+                }
+            }
+
             NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this, notificationChannelId)
-                    .setSmallIcon(R.drawable.ic_stat_notification)
+                    .setSmallIcon(iconId)
                     .setAutoCancel(true)
                     .setOngoing(true)
                     .setContentTitle(notificationTitle)
@@ -265,6 +284,9 @@ public class BackgroundService extends Service implements MethodChannel.MethodCa
                 if (arg.has("title")) {
                     notificationTitle = arg.getString("title");
                     notificationContent = arg.getString("content");
+                    if (arg.has("icon")) {
+                        notificationIcon = arg.getString("icon");
+                    }
                     updateNotificationInfo();
                     result.success(true);
                 }

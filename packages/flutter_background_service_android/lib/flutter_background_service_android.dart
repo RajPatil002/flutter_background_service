@@ -113,6 +113,8 @@ class FlutterBackgroundServiceAndroid extends FlutterBackgroundServicePlatform {
             androidConfiguration.initialNotificationContent,
         "initial_notification_title":
             androidConfiguration.initialNotificationTitle,
+        "initial_notification_icon":
+            androidConfiguration.initialNotificationIcon,
         "notification_channel_id": androidConfiguration.notificationChannelId,
         "foreground_notification_id":
             androidConfiguration.foregroundServiceNotificationId,
@@ -205,10 +207,12 @@ class AndroidServiceInstance extends ServiceInstance {
   Future<void> setForegroundNotificationInfo({
     required String title,
     required String content,
+    String? icon,
   }) async {
     await _channel.invokeMethod("setNotificationInfo", {
       "title": title,
       "content": content,
+      if (icon != null) "icon": icon,
     });
   }
 
