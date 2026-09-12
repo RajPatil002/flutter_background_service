@@ -162,14 +162,14 @@ public class BackgroundService extends Service implements MethodChannel.MethodCa
             int iconId = R.drawable.ic_stat_notification;
             if (notificationIcon != null) {
                 int resId = 0;
-                
+
                 if (notificationIcon.startsWith("@")) {
                     String[] cleanPaths = notificationIcon.substring(1).split("/");
                     if (cleanPaths.length == 2) {
                         resId = getResources().getIdentifier(cleanPaths[1], cleanPaths[0], getPackageName());
                     }
                 }
-                
+
                 if (resId != 0) {
                     iconId = resId;
                 }
