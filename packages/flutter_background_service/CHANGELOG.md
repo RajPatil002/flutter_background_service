@@ -1,3 +1,10 @@
+## 1.0.1
+
+- **REFACTOR**: Added custom notification icon support (Android)
+
+## 🚩 Forked
+---
+
 ## 5.1.1
 
  - Update a dependency to the latest release.

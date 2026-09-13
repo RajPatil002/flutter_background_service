@@ -1,3 +1,10 @@
+## 1.0.1
+
+- **REFACTOR**: Added notification icon configuration (app/../res/)
+
+## 🚩 Forked
+---
+
 ## 6.3.1
 
  - **FIX**(android): add namespace to support AGP 8.0+. ([76b0c396](https://github.com/ekasetiawans/flutter_background_service/commit/76b0c3960e2e65b5be8c60a2de0b7c0565691769))

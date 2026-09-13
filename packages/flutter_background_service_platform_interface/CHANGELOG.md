@@ -1,3 +1,10 @@
+## 1.0.1
+
+- **REFACTOR**: Added notification icon config
+
+## 🚩 Forked
+---
+
 ## 5.1.2
 
  - **FIX**: fix lints. ([95186405](https://github.com/ekasetiawans/flutter_background_service/commit/95186405f2d60112ff83956bce345ebbbc332ad7))
